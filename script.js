@@ -1,16 +1,20 @@
+// Getting Elements from HTML
 const divEle = document.querySelector(".card-container");
 const timerElement = document.getElementById("timer");
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 const resetButton = document.getElementById("reset");
 
+//Initialization
 let overallSeconds = 0;
 let seconds = 0;
 let min = 0;
 let hour = 0;
 
+//Initializing the content of timeElement to 00:00:00
 timerElement.textContent = "00 : 00 : 00";
 
+// Initializing the functionality of buttons on page Load
 document.addEventListener("DOMContentLoaded", () => {
   stopButton.disabled = true;
   stopButton.classList.remove("button_hover");
@@ -18,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   resetButton.classList.remove("button_hover");
 });
 
+// Functionality of Timer Function
 function startTimer() {
   timer = setInterval(() => {
     ++overallSeconds;
@@ -33,6 +38,7 @@ function startTimer() {
   }, 1000);
 }
 
+// Start Button Functionality
 startButton.addEventListener("click", () => {
   startTimer();
   startButton.disabled = true;
@@ -44,6 +50,7 @@ startButton.addEventListener("click", () => {
   resetButton.classList.add("button_hover");
 });
 
+// Stop Button Functionality
 stopButton.addEventListener("click", () => {
   clearInterval(timer);
   startButton.disabled = false;
@@ -53,6 +60,7 @@ stopButton.addEventListener("click", () => {
   stopButton.classList.remove("button_hover");
 });
 
+// Reset Button Functionality
 resetButton.addEventListener("click", () => {
   clearInterval(timer);
   overallSeconds = 0;
